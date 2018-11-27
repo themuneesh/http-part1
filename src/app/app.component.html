@@ -1,0 +1,79 @@
+<!--The content below is only a placeholder and can be replaced.-->
+
+<div class="test">
+  <table [formGroup]="productForm">
+      <tr>
+        <td>
+          <mat-form-field>
+            <input type="text" formControlName="id" placeholder="ID" matInput>
+          </mat-form-field>
+        </td>
+        <td *ngIf="productForm.get('id').invalid && productForm.get('id').touched">
+          <p *ngIf="productForm.get('id').errors.required">This field id required</p>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input type="text" formControlName="name" placeholder="Name" matInput>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field>
+            <input type="text" formControlName="price" placeholder="Price" matInput>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <button mat-raised-button color="primary" (click)= "submitForm()">Submit</button>
+        </td>
+        <td>
+          <button mat-raised-button color="primary" (click)= "deleteForm()">Delete</button>
+        </td>
+        <td>
+          <button mat-raised-button color="primary" (click)= "editForm()">Edit</button>
+        </td>
+      </tr>
+    </table>
+
+    <table *ngIf="products.length > 0; then: records; else: norecords" class="pro-tab">
+    </table>
+    <ng-template #records>
+      <tr *ngFor="let product of products">
+        <td>{{product.id}}</td>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+      </tr>
+    </ng-template>
+    <ng-template #norecords>
+      <h3>No Records Found</h3>
+    </ng-template> 
+  
+  <!-- <ul *ngIf="products.length > 0; then: records; else: norecords">
+
+  </ul>
+  
+  <ng-template #records>
+    <li *ngFor="let product of products">
+      <ul>
+        <li>{{product.id}}</li>
+        <li>{{product.name}}</li>
+        <li>{{product.price}}</li>
+      </ul>
+    </li>
+  </ng-template>
+  <ng-template #norecords>
+    <h3>No Records Found</h3>
+  </ng-template> -->
+</div>
+<br><hr><hr><hr><br>
+<app-newapi>
+  
+</app-newapi>
+
+<router-outlet></router-outlet>
+
+<br><br><br>

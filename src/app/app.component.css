@@ -1,0 +1,11 @@
+.test{
+    margin: 50px 0px 0px 100px;
+    list-style-type: none;
+    display: -webkit-inline-box;
+}
+
+
+ td {
+    text-align: left;
+    padding: 15px;
+}

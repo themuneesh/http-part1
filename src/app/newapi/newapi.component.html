@@ -1,0 +1,53 @@
+
+
+    <table [formGroup]="postForm">
+        <tr>
+          <td>
+            <mat-form-field>
+              <input type="text" formControlName="title" placeholder="Title" matInput>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <mat-form-field>
+              <textarea formControlName="description" placeholder="Description" matInput></textarea>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <button mat-raised-button color= "warn" (click)="addHashtags()">Add Hashtags</button>
+          </td>
+        </tr>
+        <ng-container formArrayName = "hashtags" *ngFor = "let tag of postForm.get('hashtags').controls; let i = index;">
+          <tr>
+            <td>
+              <mat-form-field>
+                <input type="text" formControlName="{{i}}" placeholder="Hashtag" matInput> 
+              </mat-form-field>
+              <mat-icon color="primary" (click)="deleteHashtags(i)">delete</mat-icon>
+            </td>
+          </tr>
+        </ng-container>
+        <tr>
+          <td>
+            <button mat-raised-button color="primary" (click)="postFormData()">Post</button>
+          </td>
+        </tr>
+      </table>
+     
+    <table>
+      <tr *ngFor = "let post of posts; let i= index;">
+        <td>{{post._id}}</td>
+        <td>{{post.title}}</td>
+        <td>{{post.description}}</td>
+        <td>{{post.hashtags}}</td>
+        <td><button mat-raised-button color="primary" (click)="updateData(post._id)">Update</button></td>
+        <td><button mat-raised-button color="primary" (click)="deleteData(post._id)">Delete</button></td>
+      </tr>
+  </table>
+
+  <div *ngFor="let dog of dogs">
+    <img src="{{dog}}" alt="">
+  </div>
